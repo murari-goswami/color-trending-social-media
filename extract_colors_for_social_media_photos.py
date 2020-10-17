@@ -5,8 +5,8 @@ from tools import *
 if debug_mode == 1:
     #control progress
     if continue_run == 0 or not os.path.isfile(os.path.join(output_path, "progress.csv")):
-        with open(os.path.join(output_path, "progress.csv"), 'w', newline = '') as f:
-            writer = csv.writer(f)
+        with open(os.path.join(output_path, "progress.csv"), 'w', newline = '') as file:
+            writer = csv.writer(file)
             writer.writerow(["file", "status"])
             for file in os.listdir(data_path):
                 writer.writerow([file, "not started"])
@@ -33,6 +33,7 @@ if debug_mode == 1:
             #start to process the file
             time_it(file + " started")
             try:
+                #color_info = analyze_picture(file)
                 color_info = analyze_picture(file)
             except:
                 continue
